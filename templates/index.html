@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Task Master</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1 style="text-align: center">Task Master</h1>
+    {% if tasks|length < 1 %} <h4 style="text-align: center">There are no tasks. Create one below!</h4>
+        {% else %}
+        <table>
+            <th>To-do
+                <table>
+                    <tr>
+                        <th>Task</th>
+                        <th>Actions</th>
+                    </tr>
+                    {% for task in tasks %}
+                    {% if task.status == 0 %}
+                    <tr>
+                        <td>{{ task.content }}</td>
+                        <td>
+                            <a href="/delete/{{task.id}}">Delete</a>
+                            <br>
+                            <a href="/update/{{task.id}}">Update</a>
+                            <br>
+                            <form action="/status/{{task.id}}" method="POST">
+                                <select name="status" id="status">
+                                    <option value=0">To do</option>
+                                    <option value=1>Doing</option>
+                                    <option value=2>Done</option>
+                                </select>
+                                <input type="submit" value="Move Task">
+                            </form>
+
+                        </td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                    <table style="background-color: #ffffff;">
+                        <caption>Doing</caption>
+                        <tr>
+                            <th>Task</th>
+                            <th>Actions</th>
+                        </tr>
+                        {% for task in tasks %}
+                        {% if task.status == 1 %}
+                        <tr>
+                            <td>{{ task.content }}</td>
+                            <td>
+                                <a href="/delete/{{task.id}}">Delete</a>
+                                <br>
+                                <a href="/update/{{task.id}}">Update</a>
+                                <br>
+                                <form action="/status/{{task.id}}">
+                                    <select name="status" id="status">
+                                        <option value=0>To do</option>
+                                        <option value=1>Doing</option>
+                                        <option value=2>Done</option>
+                                    </select>
+                                    <input type="submit" value="Move Task">
+                                </form>
+
+                            </td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                    </table>
+                    <table style="background-color: #ffffff;">
+                        <caption>Done</caption>
+                        <tr>
+                            <th>Task</th>
+                            <th>Actions</th>
+                        </tr>
+                        {% for task in tasks %}
+                        {% if task.status == 2 %}
+                        <tr>
+                            <td>{{ task.content }}</td>
+                            <td>
+                                <a href="/delete/{{task.id}}">Delete</a>
+                                <br>
+                                <a href="/update/{{task.id}}">Update</a>
+                                <br>
+                                <form action="/status/{{task.id}}">
+                                    <select name="status" id="status">
+                                        <option value=0>To do</option>
+                                        <option value=1>Doing</option>
+                                        <option value=2>Done</option>
+                                    </select>
+                                    <input type="submit" value="Move Task">
+                                </form>
+
+                            </td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                    </table>
+                    {% endif %}
+
+                    <div class="form">
+                        <form action="/" method="POST">
+                            <input type="text" name="content" id="content">
+                            <input type="submit" value="Add Task">
+                        </form>
+                    </div>
+</div>
+</table>
+</div>
+{% endblock %}
