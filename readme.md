@@ -27,5 +27,4 @@ To run the application, run:
 ` python3 app.py` 
 
 ## Run tests
-With the virtual environment running, and on the root folder (in this case my_kaban), run
 ` python -m unittest` 
