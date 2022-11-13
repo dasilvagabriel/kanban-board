@@ -2,7 +2,7 @@
 A kanban board web app built on Flask
 
 # How to run (MAC):
-All set up should be run from the directory '.../kanban/'
+All set up should be run from the directory '.../kanban-board/'
 
 ## Set up virtual environment (use terminal):
 ` python3 -m venv .venv` 
