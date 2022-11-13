@@ -28,3 +28,6 @@ To run the application, run:
 
 ## Run tests
 ` python -m unittest` 
+
+## Thanks
+Special thanks to Fellipe Couto for the collaboration. Aniket, Ha, Ingrid, And Crechien for the mentoring.
